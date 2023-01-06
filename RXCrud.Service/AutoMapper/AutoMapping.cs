@@ -8,6 +8,9 @@ namespace RXCrud.Service.AutoMapper
     {
         public AutoMapping()
         {
+            CreateMap<Cidade, CidadeDto>()
+                .ReverseMap();
+
             CreateMap<Usuario, UsuarioDto>()
                 .ReverseMap();
         }
