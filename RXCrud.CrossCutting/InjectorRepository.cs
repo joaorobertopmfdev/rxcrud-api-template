@@ -10,6 +10,7 @@ namespace RXCrud.CrossCutting
         {
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<ICidadeRepository, CidadeRepository>();
+            services.AddScoped<IEstadoRepository, EstadoRepository>();
         }
     }
 }

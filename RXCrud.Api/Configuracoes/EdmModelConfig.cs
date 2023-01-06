@@ -12,6 +12,7 @@ namespace RXCrud.Api.Configuracoes
 
             odataBuilder.EntitySet<UsuarioDto>("Usuario");
             odataBuilder.EntitySet<CidadeDto>("Cidade");
+            odataBuilder.EntitySet<EstadoDto>("Estado");
 
             return odataBuilder.GetEdmModel();
         }

@@ -10,6 +10,7 @@ namespace RXCrud.CrossCutting
         {
             services.AddScoped<IUsuarioService, UsuarioService>();
             services.AddScoped<ICidadeService, CidadeService>();
+            services.AddScoped<IEstadoService, EstadoService>();
         }
     }
 }
