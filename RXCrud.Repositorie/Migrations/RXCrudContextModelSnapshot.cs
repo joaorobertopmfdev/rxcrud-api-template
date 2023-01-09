@@ -32,7 +32,13 @@ namespace RXCrud.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<Guid>("IdEstado")
+                        .HasColumnType("uuid");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("IdEstado")
+                        .IsUnique();
 
                     b.ToTable("Cidade");
                 });
@@ -93,6 +99,22 @@ namespace RXCrud.Data.Migrations
                             NomeAcesso = "gleryston",
                             Senha = "nQm92qSBD7TDIhkt5co1YA=="
                         });
+                });
+
+            modelBuilder.Entity("RXCrud.Domain.Entities.Cidade", b =>
+                {
+                    b.HasOne("RXCrud.Domain.Entities.Estado", "Estado")
+                        .WithOne("Cidade")
+                        .HasForeignKey("RXCrud.Domain.Entities.Cidade", "IdEstado")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Estado");
+                });
+
+            modelBuilder.Entity("RXCrud.Domain.Entities.Estado", b =>
+                {
+                    b.Navigation("Cidade");
                 });
 #pragma warning restore 612, 618
         }

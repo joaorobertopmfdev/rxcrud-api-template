@@ -14,5 +14,6 @@ namespace RXCrud.Domain.Entities
             Descricao = descricao;
         }
         public string Descricao { get; set; }
+        public Cidade Cidade { get; set; }
     }
 }

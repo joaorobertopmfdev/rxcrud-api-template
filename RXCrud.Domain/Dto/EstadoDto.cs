@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RXCrud.Domain.Entities;
+using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -20,6 +21,5 @@ namespace RXCrud.Domain.Dto
 
         [Required(ErrorMessage = "Campo 'Descrição' obrigatório.")]
         public string Descricao { get; set; }
-
     }
 }

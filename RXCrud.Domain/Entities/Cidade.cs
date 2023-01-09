@@ -8,11 +8,17 @@ namespace RXCrud.Domain.Entities
 {
     public class Cidade : Entity
     {
-        public Cidade(string descricao)
+        public Cidade(string descricao, Guid idEstado)
         {
             Id = Guid.NewGuid();
             Descricao = descricao;
+            IdEstado = idEstado;
         }
+
         public string Descricao { get; set; }
+
+        public Guid IdEstado { get; set; }
+
+        public Estado Estado { get; set; }
     }
 }

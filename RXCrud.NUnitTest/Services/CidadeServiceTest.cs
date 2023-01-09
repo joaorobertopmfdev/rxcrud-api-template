@@ -9,6 +9,7 @@ using RXCrud.Domain.Interfaces.Data;
 using RXCrud.NUnitTest.Common;
 using RXCrud.Service.Services;
 using RXCrud.Domain.Dto;
+using System;
 
 namespace RxCrud.NUnitTest.Services
 {
@@ -22,22 +23,22 @@ namespace RxCrud.NUnitTest.Services
         public CidadeServiceTest()
         {
             _mapper = Utilitarios.GetMapper();
-            _cidade = new Cidade("Cidade Teste");
+            _cidade = new Cidade("Cidade Teste", Guid.NewGuid());
             _mockCidadeRepository = new Mock<ICidadeRepository>();
             _cidadeService = new CidadeService(_mapper, _mockCidadeRepository.Object);
         }
 
         [Test]
         public void CriarTest()
-            => Assert.DoesNotThrow(() => _cidadeService.Criar(new CidadeDto("Cidade Teste Create")));
+            => Assert.DoesNotThrow(() => _cidadeService.Criar(new CidadeDto("Cidade Teste Create", Guid.NewGuid())));
 
         [Test]
         public void AtualizarTest()
-            => Assert.DoesNotThrow(() => _cidadeService.Atualizar(new CidadeDto("Cidade Teste Update")));
+            => Assert.DoesNotThrow(() => _cidadeService.Atualizar(new CidadeDto("Cidade Teste Update", Guid.NewGuid())));
 
         [Test]
         public void RemoverTest()
-            => Assert.DoesNotThrow(() => _cidadeService.Remover(new CidadeDto("Cidade Teste Remove")));
+            => Assert.DoesNotThrow(() => _cidadeService.Remover(new CidadeDto("Cidade Teste Remove", Guid.NewGuid())));
 
         [Test]
         public void ObterTodosTest()

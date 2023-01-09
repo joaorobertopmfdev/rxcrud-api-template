@@ -12,7 +12,7 @@ using RXCrud.Data.Context;
 namespace RXCrud.Data.Migrations
 {
     [DbContext(typeof(RXCrudContext))]
-    [Migration("20230106170453_v3")]
+    [Migration("20230108212855_v3")]
     partial class v3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,7 +34,13 @@ namespace RXCrud.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<Guid>("IdEstado")
+                        .HasColumnType("uuid");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("IdEstado")
+                        .IsUnique();
 
                     b.ToTable("Cidade");
                 });
@@ -95,6 +101,22 @@ namespace RXCrud.Data.Migrations
                             NomeAcesso = "gleryston",
                             Senha = "nQm92qSBD7TDIhkt5co1YA=="
                         });
+                });
+
+            modelBuilder.Entity("RXCrud.Domain.Entities.Cidade", b =>
+                {
+                    b.HasOne("RXCrud.Domain.Entities.Estado", "Estado")
+                        .WithOne("Cidade")
+                        .HasForeignKey("RXCrud.Domain.Entities.Cidade", "IdEstado")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Estado");
+                });
+
+            modelBuilder.Entity("RXCrud.Domain.Entities.Estado", b =>
+                {
+                    b.Navigation("Cidade");
                 });
 #pragma warning restore 612, 618
         }

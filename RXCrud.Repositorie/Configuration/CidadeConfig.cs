@@ -8,8 +8,10 @@ namespace RXCrud.Data.Configuration
     {
         public void Configure(EntityTypeBuilder<Cidade> builder)
         {
-            builder.HasKey(p => p.Id);
-            builder.Property(p => p.Descricao).IsRequired();
+            builder.HasKey(c => c.Id);
+            builder.Property(c => c.Descricao).IsRequired();
+            builder.Property(c => c.IdEstado).IsRequired();
+            builder.HasOne(c => c.Estado).WithOne(e => e.Cidade).HasForeignKey<Cidade>(c => c.IdEstado).OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
